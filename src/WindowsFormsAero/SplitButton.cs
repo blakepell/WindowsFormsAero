@@ -56,7 +56,9 @@ namespace WindowsFormsAero {
         ]
         public event EventHandler<SplitMenuEventArgs> SplitMenuOpening;
 
-        protected virtual void OnSplitClick(SplitMenuEventArgs e) {
+#if NET40 || NET461 || NET48
+        protected virtual void OnSplitClick(SplitMenuEventArgs e)
+        {
             SplitClick?.Invoke(this, e);
 
             if (SplitMenu == null && SplitMenuStrip == null)
@@ -68,14 +70,34 @@ namespace WindowsFormsAero {
                 return;
 
             var pBottomLeft = new System.Drawing.Point(e.DrawArea.Left, e.DrawArea.Bottom);
-            if (SplitMenu != null) {
+            if (SplitMenu != null)
+            {
                 SplitMenu.Show(this, pBottomLeft);
             }
-            else if (SplitMenuStrip != null) {
+            else if (SplitMenuStrip != null)
+            {
                 SplitMenuStrip.Width = e.DrawArea.Width;
                 SplitMenuStrip.Show(this, pBottomLeft);
             }
         }
+#else
+        protected virtual void OnSplitClick(SplitMenuEventArgs e) {
+            SplitClick?.Invoke(this, e);
+
+            if (SplitMenuStrip == null)
+                return;
+
+            SplitMenuOpening?.Invoke(this, e);
+
+            if (e.PreventOpening)
+                return;
+
+            var pBottomLeft = new System.Drawing.Point(e.DrawArea.Left, e.DrawArea.Bottom);
+
+            SplitMenuStrip.Width = e.DrawArea.Width;
+            SplitMenuStrip.Show(this, pBottomLeft);
+        }
+#endif
 
         /// <summary>
         /// Gets or sets the associated context menu that is displayed when the split
@@ -88,6 +110,7 @@ namespace WindowsFormsAero {
         ]
         public ContextMenuStrip SplitMenuStrip { get; set; }
 
+#if NET40 || NET461 || NET48
         /// <summary>
         /// Gets or sets the associated context menu that is displayed when the split
         /// glyph of the button is clicked.
@@ -103,8 +126,9 @@ namespace WindowsFormsAero {
         DefaultValue(null)
         ]
         public ContextMenu SplitMenu { get; set; }
+#endif
 
-        #endregion Split Context Menu
+#endregion Split Context Menu
 
         bool _alignLeft = false;
 

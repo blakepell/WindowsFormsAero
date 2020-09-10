@@ -22,6 +22,14 @@ Install-Package Windows-Forms-Aero
 
 ## Version history
 
+### 4.0.0
+
+ * .NET Core 3.0 and 3.1 support.
+    * The NuGet package now builds libraries for .NET Framework 4.0, 4.5, 4.6.1 and 4.8 and .NET Core 3.0 and 3.1 via the new csproj file format.
+    * The `ContextMenu` class was removed from .NET Core 3.1 and above, as a result, directives have been put into place so that the 4.x branches continue to behave as they previously did while the .NET Core branches remove the fallback property.  To migrate to .NET Core make sure your app uses the `ContextMenuStrip` and not the `ContextMenu`.
+    * The assemblies bundled support different versions of Windows.  The 4.0 and 4.5 assemblies support legacy OS's and even the 4.8 assembly supports back to Windows 7 SP1.  The .NET Core 3.0 assembly supports back to Windows 7 SP1 but the .NET Core 3.1 assembly only goes back to Windows 8.1.  Windows 10 support is segmented by it's release.  Refer to https://docs.microsoft.com/en-us/dotnet/core/install/windows?tabs=netcore31 for more specific info of .NET Core support on Windows 10.
+* A second showcase project has been added for WinForms on .NET Core.
+
 ### 3.1.1
 
 * Fixed [bug with TaskDialog APIs on x64](https://github.com/LorenzCK/WindowsFormsAero/issues/5) (thanks Piotr Zięzio).

@@ -34,6 +34,12 @@ namespace WindowsFormsAero.Native {
 
         #region DWM Glass Frame
 
+        /// <summary>
+        /// This API extends the frame into the client area.  It will work in Windows 7 and 8 but doesn't do
+        /// anything in Windows 10.
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="pMarInset"></param>
         [DllImport("dwmapi.dll")]
         public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref Margins pMarInset);
 
@@ -41,6 +47,12 @@ namespace WindowsFormsAero.Native {
 
         #region DWM Blur Behind
 
+        /// <summary>
+        /// This API greats the blur/glass affect.  It will work in Windows 7 and 8 but doesn't do anything
+        /// in Windows 10.
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="pBlurBehind"></param>
         [DllImport("dwmapi.dll")]
         public static extern int DwmEnableBlurBehindWindow(IntPtr hWnd, ref DwmBlurBehind pBlurBehind);
 

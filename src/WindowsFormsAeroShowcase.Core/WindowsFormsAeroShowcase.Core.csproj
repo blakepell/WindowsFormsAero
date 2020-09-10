@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>WindowsFormsAeroShowcase</RootNamespace>
+    <Authors>Marco Minerva, Lorenz Cuno Klopfenstein, Blake Pell</Authors>
+    <Version>4.0.0.0</Version>
+    <Copyright>2007-2020</Copyright>
+    <Description>Showcase project for the Windows Forms Aero Library/NuGet package.</Description>
+    <PackageLicenseExpression>MS-RL</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/LorenzCK/WindowsFormsAero</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/LorenzCK/WindowsFormsAero</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WindowsFormsAero\WindowsFormsAero.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="HorizontalPanelExample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="HorizontalPanelExample.Designer.cs">
+      <DependentUpon>HorizontalPanelExample.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Update="ThumbnailedWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ThumbnailedWindow.Designer.cs">
+      <DependentUpon>ThumbnailedWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Update="VerticalPanelExample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="VerticalPanelExample.Designer.cs">
+      <DependentUpon>VerticalPanelExample.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="HorizontalPanelExample.resx">
+      <DependentUpon>HorizontalPanelExample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Main.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ThumbnailedWindow.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ThumbnailedWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="VerticalPanelExample.resx">
+      <DependentUpon>VerticalPanelExample.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
